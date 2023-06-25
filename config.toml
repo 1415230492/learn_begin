@@ -1,0 +1,12 @@
+[log_info]
+level = "info"
+
+[server]
+ip = "127.0.0.1"
+port = "8080"
+
+[database]
+host = "localhost"
+username = "root"
+password = "password"
+database_name = "mydb"
