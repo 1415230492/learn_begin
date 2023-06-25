@@ -10,10 +10,10 @@ use clap::Parser;
 use serde::{Deserialize, Serialize};
 
 #[derive(Parser)]
-#[clap(name = "get_con_mets")]
-#[clap(version = "1.0.0")]
-#[clap(about = "Scan Block")]
-#[clap(arg_required_else_help = true)]
+// #[clap(name = "get_con_mets")]
+// #[clap(version = "1.0.0")]
+// #[clap(about = "Scan Block")]
+// #[clap(arg_required_else_help = true)]
 
 pub struct Cli {
     #[clap(short, long, value_name = "FILE")]//, parse(from_os_str),

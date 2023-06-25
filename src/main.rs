@@ -2,7 +2,8 @@
 use test1::conf::cli::load_conf;
 
 
-fn main() {
+#[async_std::main]
+async fn main() {
     // 打开文件
     // let mut file = File::open("config.toml").unwrap();
     // let mut contents = String::new();
@@ -40,5 +41,7 @@ fn main() {
     // info!("Hello, world!");
     // warn!("Hello, world!");
     // error!("Hello, world!");
+
+    
 }
 
