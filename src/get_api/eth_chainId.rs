@@ -1,4 +1,8 @@
+use std::time::Duration;
+
 use serde::{Deserialize, Serialize};
+use surf::{client, http::Method, Client, Config, Url};
+
 
 #[derive(Deserialize, Serialize)]
 struct RequestData {
@@ -22,13 +26,29 @@ pub async fn eth_chainId() {
         id: 1
     };
 
-    let uri = "http://eth.node.diagonalley.xyz/";
-    if let Ok(res) = surf::post(uri).body_json(&data) {
+    let url = "https://eth.llamarpc.com";
+    if let Ok(res) = surf::post(url.clone()).body_json(&data) {
         if let Ok(t) = res.recv_json::<ReturnData>().await{
-            println!("{:#?}", t)
+            println!("res: {:#?}", t)
         }
-        
     }
+
+    // 添加超时设置
+    let client:Client = Config::new()
+        .set_timeout(Some(Duration::from_micros(1)))
+        .try_into().unwrap(); // 设置超时时间为 10 秒
+    if let Ok(res) = client.post(url.clone()).body_json(&data) {
+        println!("res: {:#?}", res);
+        if let Ok(t) = res.recv_json::<ReturnData>().await{
+            println!("----{:#?}", t)
+        }else{
+            println!("type match error")
+        }
+    }else{
+        println!("error");
+    }
+    // println!("{:#?}", res)
+
 }
 
 #[cfg(test)]
