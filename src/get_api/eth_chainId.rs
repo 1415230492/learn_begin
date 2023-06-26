@@ -28,11 +28,6 @@ pub async fn eth_chainId() {
     };
 
     let url = "https://eth.llamarpc.com";
-    if let Ok(res) = surf::post(url.clone()).body_json(&data) {
-        if let Ok(t) = res.recv_json::<ReturnData>().await{
-            println!("res: {:#?}", t)
-        }
-    }
 
     // 添加超时设置
     let client:Client = Config::new()
