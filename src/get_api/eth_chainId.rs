@@ -1,5 +1,6 @@
 use std::time::Duration;
 
+use log::info;
 use serde::{Deserialize, Serialize};
 use surf::{client, http::Method, Client, Config, Url};
 
@@ -35,7 +36,7 @@ pub async fn eth_chainId() {
 
     // 添加超时设置
     let client:Client = Config::new()
-        .set_timeout(Some(Duration::from_micros(1)))
+        .set_timeout(Some(Duration::from_millis(1)))
         .try_into().unwrap(); // 设置超时时间为 10 秒
     if let Ok(res) = client.post(url.clone()).body_json(&data) {
         println!("res: {:#?}", res);
