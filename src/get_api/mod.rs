@@ -1,1 +1,1 @@
-pub mod eth_chainId;
+pub mod eth_chain_id;

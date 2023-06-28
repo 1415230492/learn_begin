@@ -65,8 +65,6 @@ impl Config {
     pub fn get_log_level(&self) -> String {
         self.log_info.level.clone()
     }
-
-    
 }
 
 pub fn load_conf() -> Config {
